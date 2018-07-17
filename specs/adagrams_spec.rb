@@ -34,5 +34,23 @@ describe 'Adagrams' do
     it 'returns a score regardless of input case' do
       score_word("dog").must_equal 5
     end
+
+    it 'returns a score of 0 if given an empty input' do
+      score_word("").must_equal 0
+    end
+
+    it 'returns an error if part of the input is a non-letter non-english character' do
+      proc {
+        score_word("invalid whitespace input")
+      }.must_raise ArgumentError
+
+      proc {
+        score_word("num3r1c1npu7")
+      }.must_raise ArgumentError
+
+      proc {
+        score_word("punctuated_input")
+      }.must_raise ArgumentError
+    end
   end
 end

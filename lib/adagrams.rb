@@ -30,6 +30,14 @@ def draw_letters
   drawn_letters
 end
 
+def is_valid? letter
+  if /[a-zA-Z]/.match letter
+    true
+  else
+    raise ArgumentError.new "input included some non-letter character"
+  end
+end
+
 def score_word input
   letter_scores = {
       "A"=>1,
@@ -65,6 +73,7 @@ def score_word input
   letters = input.upcase.split('')
 
   letters.each do |letter|
+    is_valid? letter
     total_score += letter_scores[letter]
   end
 
