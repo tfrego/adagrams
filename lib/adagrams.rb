@@ -25,7 +25,7 @@ def draw_letters
   ]
   drawn_letters = []
   10.times do |letter|
-    drawn_letters << letter_pool_array.pop
+    drawn_letters << letter_pool_array.shuffle.pop
   end
   drawn_letters
 end
