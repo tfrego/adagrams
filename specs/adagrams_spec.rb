@@ -25,4 +25,14 @@ describe 'Adagrams' do
       end
     end
   end
+
+  describe 'score_word method' do
+    it 'returns an accurate numerical score according to the score chart' do
+      score_word("DOG").must_equal 5
+    end
+
+    it 'returns a score regardless of input case' do
+      score_word("dog").must_equal 5
+    end
+  end
 end
