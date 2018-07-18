@@ -50,7 +50,7 @@ def run_game
 
     user_input_word = get_user_input
 
-    while ( !(uses_available_letters?(user_input_word, letter_bank) && is_alpha?(user_input_word)) )
+    while ( !(uses_available_letters?(user_input_word, letter_bank)) )
       display_needs_valid_input_message
       user_input_word = get_user_input
     end
