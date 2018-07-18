@@ -10,11 +10,11 @@ def display_drawn_letters letters
 end
 
 def display_game_instructions
-  puts "Please input your submission for the longest anagram you can come up with"
+  puts "Please input a word"
 end
 
 def display_score score
-  puts "Your submitted anagram scored #{score} points"
+  puts "Your submitted word scored #{score} points"
 end
 
 def display_retry_insructions
@@ -36,9 +36,6 @@ def run_game
   should_continue = true
 
   while should_continue
-    puts "Let's draw 10 letters from the letter pool..."
-    display_drawn_letters(draw_letters)
-
     display_game_instructions
     user_input_word = get_user_input
 
