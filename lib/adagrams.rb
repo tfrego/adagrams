@@ -30,12 +30,37 @@ def draw_letters
   drawn_letters
 end
 
-def is_valid? letter
-  if /[a-zA-Z]/.match letter
-    true
-  else
-    raise ArgumentError.new "input included some non-letter character"
+def uses_available_letters? input, letter_bank
+  input_array = input.upcase.split('')
+  letter_hash = {}
+
+  letter_bank.each do |letter|
+    letter_hash[letter] = letter_hash[letter] ? letter_hash[letter] + 1 : 1
   end
+
+  input_array.each do |letter|
+    if letter_hash[letter]
+      if letter_hash[letter] < 1
+        return false
+      else
+        letter_hash[letter] -= 1
+      end
+    else
+      return false
+    end
+  end
+
+  true
+end
+
+def is_alpha? input
+  is_alpha = true
+  input.split('').each do |letter|
+    if !letter.match(/[a-zA-Z]+/)
+      is_alpha = false
+    end
+  end
+  is_alpha
 end
 
 def score_word input
@@ -73,32 +98,8 @@ def score_word input
   letters = input.upcase.split('')
 
   letters.each do |letter|
-    is_valid? letter
     total_score += letter_scores[letter]
   end
 
   total_score
-end
-
-def letters_are_valid? input, letter_bank
-  input_array = input.upcase.split('')
-  letter_hash = {}
-
-  letter_bank.each do |letter|
-    letter_hash[letter] = letter_hash[letter] ? letter_hash[letter] + 1 : 1
-  end
-
-  input_array.each do |letter|
-    if letter_hash[letter]
-      if letter_hash[letter] < 1
-        return false
-      else
-        letter_hash[letter] -= 1
-      end
-    else
-      return false
-    end
-  end
-
-  true
 end

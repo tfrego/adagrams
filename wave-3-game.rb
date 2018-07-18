@@ -15,6 +15,7 @@ end
 
 def display_needs_valid_input_message
   puts "You entered in a word that contains characters not in the letter bank"
+  display_game_instructions
 end
 
 def display_score score
@@ -23,7 +24,7 @@ end
 
 def display_retry_insructions
   puts "Should we play another round?"
-  puts "Enter Y to replay"
+  puts "Enter y to replay"
 end
 
 def display_goodbye_message
@@ -49,7 +50,7 @@ def run_game
 
     user_input_word = get_user_input
 
-    while ( !letters_are_valid? user_input_word, letter_bank )
+    while ( !(uses_available_letters?(user_input_word, letter_bank) && is_alpha?(user_input_word)) )
       display_needs_valid_input_message
       user_input_word = get_user_input
     end
@@ -59,7 +60,7 @@ def run_game
     display_score score
 
     display_retry_insructions
-    should_continue = get_user_input == "Y"
+    should_continue = get_user_input == "y"
   end
 
   display_goodbye_message

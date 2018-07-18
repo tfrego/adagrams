@@ -10,16 +10,21 @@ def display_drawn_letters letters
 end
 
 def display_game_instructions
-  puts "Please input a word"
+  puts "Please input a word that only uses the letters from the letter bank"
+end
+
+def display_needs_valid_input_message
+  puts "You entered in a word that contains characters not in the letter bank"
+  display_game_instructions
 end
 
 def display_score score
-  puts "Your submitted word scored #{score} points"
+  puts "Your submitted anagram scored #{score} points"
 end
 
 def display_retry_insructions
   puts "Should we play another round?"
-  puts "Enter Y to replay"
+  puts "Enter y to replay"
 end
 
 def display_goodbye_message
@@ -36,15 +41,22 @@ def run_game
   should_continue = true
 
   while should_continue
+    puts "Let's draw 10 letters from the letter pool..."
+
+    letter_bank = draw_letters
+    display_drawn_letters(letter_bank)
+
     display_game_instructions
+
     user_input_word = get_user_input
 
-    score = score_word user_input_word
-
-    display_score score
+    while ( !(uses_available_letters?(user_input_word, letter_bank) && is_alpha?(user_input_word)) )
+      display_needs_valid_input_message
+      user_input_word = get_user_input
+    end
 
     display_retry_insructions
-    should_continue = get_user_input == "Y"
+    should_continue = get_user_input == "y"
   end
 
   display_goodbye_message

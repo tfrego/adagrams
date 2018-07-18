@@ -26,6 +26,49 @@ describe 'Adagrams' do
     end
   end
 
+  describe 'uses_available_letters? method' do
+
+    it 'returns true if the submitted letters are valid against the drawn letters' do
+      drawn_letters = ['D', 'O', 'G', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+      test_word = 'DOG'
+
+      is_valid = uses_available_letters? test_word, drawn_letters
+
+      is_valid.must_equal true
+    end
+
+    it 'returns false word contains letters not in the drawn letters' do
+      drawn_letters = ['D', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+      test_word = 'DOG'
+
+      is_valid = uses_available_letters? test_word, drawn_letters
+
+      is_valid.must_equal false
+    end
+
+    it 'returns false word contains repeated letters more than in the drawn letters' do
+      drawn_letters = ['A', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+      test_word = 'AAA'
+
+      is_valid = uses_available_letters? test_word, drawn_letters
+
+      is_valid.must_equal false
+    end
+
+  end
+
+  describe 'is_alpha? method' do
+
+    it 'returns an error if part of the input is a non-letter non-english character' do
+      is_alpha?("invalid whitespace input").must_equal false
+
+      is_alpha?("num3r1c1npu7").must_equal false
+
+      is_alpha?("punctuated_input").must_equal false
+    end
+
+  end
+
   describe 'score_word method' do
     it 'returns an accurate numerical score according to the score chart' do
       score_word("DOG").must_equal 5
@@ -42,51 +85,7 @@ describe 'Adagrams' do
     it 'returns a score of 0 if given an empty input' do
       score_word("").must_equal 0
     end
-
-    it 'returns an error if part of the input is a non-letter non-english character' do
-      proc {
-        score_word("invalid whitespace input")
-      }.must_raise ArgumentError
-
-      proc {
-        score_word("num3r1c1npu7")
-      }.must_raise ArgumentError
-
-      proc {
-        score_word("punctuated_input")
-      }.must_raise ArgumentError
-    end
   end
 
-  describe 'letters_are_valid? method' do
 
-    it 'returns true if the submitted letters are valid against the drawn letters' do
-      drawn_letters = ['D', 'O', 'G', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-      test_word = 'DOG'
-
-      is_valid = letters_are_valid? test_word, drawn_letters
-
-      is_valid.must_equal true
-    end
-
-    it 'returns false word contains letters not in the drawn letters' do
-      drawn_letters = ['D', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-      test_word = 'DOG'
-
-      is_valid = letters_are_valid? test_word, drawn_letters
-
-      is_valid.must_equal false
-    end
-
-    it 'returns false word contains repeated letters more than in the drawn letters' do
-      drawn_letters = ['A', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
-      test_word = 'AAA'
-
-      is_valid = letters_are_valid? test_word, drawn_letters
-
-      is_valid.must_equal false
-    end
-
-
-  end
 end
