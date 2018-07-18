@@ -57,4 +57,36 @@ describe 'Adagrams' do
       }.must_raise ArgumentError
     end
   end
+
+  describe 'letters_are_valid? method' do
+
+    it 'returns true if the submitted letters are valid against the drawn letters' do
+      drawn_letters = ['D', 'O', 'G', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+      test_word = 'DOG'
+
+      is_valid = letters_are_valid? test_word, drawn_letters
+
+      is_valid.must_equal true
+    end
+
+    it 'returns false word contains letters not in the drawn letters' do
+      drawn_letters = ['D', 'O', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+      test_word = 'DOG'
+
+      is_valid = letters_are_valid? test_word, drawn_letters
+
+      is_valid.must_equal false
+    end
+
+    it 'returns false word contains repeated letters more than in the drawn letters' do
+      drawn_letters = ['A', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X']
+      test_word = 'AAA'
+
+      is_valid = letters_are_valid? test_word, drawn_letters
+
+      is_valid.must_equal false
+    end
+
+
+  end
 end

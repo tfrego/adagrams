@@ -79,3 +79,26 @@ def score_word input
 
   total_score
 end
+
+def letters_are_valid? input, letter_bank
+  input_array = input.upcase.split('')
+  letter_hash = {}
+
+  letter_bank.each do |letter|
+    letter_hash[letter] = letter_hash[letter] ? letter_hash[letter] + 1 : 1
+  end
+
+  input_array.each do |letter|
+    if letter_hash[letter]
+      if letter_hash[letter] < 1
+        return false
+      else
+        letter_hash[letter] -= 1
+      end
+    else
+      return false
+    end
+  end
+
+  true
+end
