@@ -29,10 +29,14 @@ describe 'Adagrams' do
   describe 'score_word method' do
     it 'returns an accurate numerical score according to the score chart' do
       score_word("DOG").must_equal 5
+      score_word("WHIMSY").must_equal 17
+      score_word("TURMERIC").must_equal 12
     end
 
     it 'returns a score regardless of input case' do
       score_word("dog").must_equal 5
+      score_word("wHiMsY").must_equal 17
+      score_word("Turmeric").must_equal 12
     end
 
     it 'returns a score of 0 if given an empty input' do
