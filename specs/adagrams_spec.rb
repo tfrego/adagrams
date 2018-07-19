@@ -57,17 +57,6 @@ describe 'Adagrams' do
 
   end
 
-  # describe 'is_alpha? method' do
-  #
-  #   it 'returns an error if part of the input is a non-letter non-english character' do
-  #     is_alpha?("invalid whitespace input").must_equal false
-  #
-  #     is_alpha?("num3r1c1npu7").must_equal false
-  #
-  #     is_alpha?("punctuated_input").must_equal false
-  #   end
-  # end
-
   describe 'score_word method' do
     it 'returns an accurate numerical score according to the score chart' do
       score_word("A").must_equal 1
