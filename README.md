@@ -28,7 +28,6 @@ The program should also pass the provided unit tests.
 ## Getting Started
 
 * From the project root, you are able to execute all of your specs by running `rake` in Terminal
-* You will need to use `require_relative` to tell Ruby how to work with code defined in multiple files
 
 <details>
 <summary>For the curious about `rake`, click here</summary>
