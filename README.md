@@ -52,6 +52,9 @@ The tests for this project are written in [minitest](https://github.com/seattler
 
 Do not move onto a new wave of requirements until the minimum requirements of the previous wave are complete and your specs are green across the board.
 
+Here is what it looks like when all 16 tests are passing:
+![all 16 tests are passing message](assets/passing-tests-screenshot.png)
+
 ### Pair Programming
 Utilize good pair programming practices. Refer to articles from the [Agile Alliance](http://guide.agilealliance.org/guide/pairing.html), the [Agile Institute](http://powersoftwo.agileinstitute.com/2015/02/benefits-of-pair-programming-revisited.html), and [our own suggestions for pairing](https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/00-programming-fundamentals/programming-techniques-pairs-or-solo.md#pair-programming) if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainty or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
 
