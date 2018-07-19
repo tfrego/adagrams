@@ -56,25 +56,23 @@ Utilize good pair programming practices. Refer to articles from the [Agile Allia
 ### Driver Code
 We have provided some driver code for your Adagrams game in the files `wave-1-game.rb`, `wave-2-game.rb`, and `wave-3-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Scrabble code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for making the tests pass**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified methods to specification and making the tests pass.
 
-## Baseline
-### Setup
+## Project Requirements
+### Setup For Collaboration
 1. You'll be working with an assigned pair. High-five your pair.
 1. Choose **one person** to fork the project repo.
 1. Add the other person in the pair (who didn't fork) to the forked repo as a _collaborator_. Instructions [here](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/).
 1. Both individuals will clone the forked repo: `$ git clone [YOUR FORKED REPO URL]`
 1. Both individuals `cd` into the dir created.
 
-### Requirements
-#### Pair Plan
+### Pair Plan
+
 First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience. Then, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
 
-#### Implementation
-- Read through the file `lib/scoring.rb`. Inside this file, you should find:
-    - A `Scrabble` module
-    - A `Scrabble::Scoring` **class**
-- Add some sort of data structure to `Scrabble::Scoring` to store the **individual letter scores** listed below
-- Read through the spec file `specs/scoring_spec.rb`, which corresponds to your `Scrabble::Scoring` class. This file has some tests pre-written and some test stubs that you will need to fill in.
-- Be able to execute the tests using `rake` from the project root.
+### Get Familiar
+
+Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ rake` and see the tests fail.
+
+### Implementation Requirements
 
 #### Score chart
 |Letter                        | Value|
