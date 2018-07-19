@@ -36,17 +36,26 @@ The program should also pass the provided unit tests.
 </details>
 
 ### Tests
-We will use [minitest](https://github.com/seattlerb/minitest) for this project.
+We have provided unit tests for you to run. A complete project will pass all 16 provided tests.
 
-We have provided you with a `Rakefile` and spec files. The tests in these spec files require that you follow the naming conventions we define for you below.
+To run the tests, in the command line, navigate to the project root and then run the command `$ rake` (without the `$`. Remember, `$` indicates that it is a command line command.)
 
-Do not move onto a new tier of requirements until the minimum requirements of the previous tier are complete and your specs are green across the board.
+When you first open the project and run the tests with `rake`, you should have 0 passing tests and 16 failures. You should see something similar to the following screenshots:
 
-<!-- ### Driver Code
-We have provided some driver code for your Scrabble game in the files `wave-1-game.rb`, `wave-2-game.rb`, and `wave-3-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Scrabble code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for TDD or writing tests**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified classes below strictly through TDD. -->
+![failing tests error stack trace that reads "no method defined"](assets/failing-tests-error.png)
+![failing tests error reading "16 failures"](assets/failing-tests-screenshot.png)
+
+What do these errors mean? These errors should help guide you with the next step to completing the project.
+
+The tests for this project are written in [minitest](https://github.com/seattlerb/minitest), a testing framework by Seattle Ruby Brigade.
+
+Do not move onto a new wave of requirements until the minimum requirements of the previous wave are complete and your specs are green across the board.
 
 ### Pair Programming
 Utilize good pair programming practices. Refer to articles from the [Agile Alliance](http://guide.agilealliance.org/guide/pairing.html), the [Agile Institute](http://powersoftwo.agileinstitute.com/2015/02/benefits-of-pair-programming-revisited.html), and [our own suggestions for pairing](https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/00-programming-fundamentals/programming-techniques-pairs-or-solo.md#pair-programming) if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainty or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
+
+### Driver Code
+We have provided some driver code for your Adagrams game in the files `wave-1-game.rb`, `wave-2-game.rb`, and `wave-3-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Scrabble code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for making the tests pass**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified methods to specification and making the tests pass.
 
 ## Baseline
 ### Setup
