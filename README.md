@@ -8,20 +8,22 @@
 
 An [anagram](https://en.wikipedia.org/wiki/Anagram) is a word or phrase formed by rearranging the letters of a different word or phrase. _Adagrams_ is a fictional game in which a player is given a random set of letters and must make an anagram using those letters. _Adagrams_ has a specific scoring system, so that the player's submitted anagram scores points. The rules for Adagrams are roughly inspired by the "Letter Round" portion of the British game show [Countdown](https://en.wikipedia.org/wiki/Countdown_%28game_show%29%23Letters_round).
 
-While working on _Adagrams_, it may help to think of a physical metaphor for this game, such as other common word games like _Scrabble_ or _Bananagrams_. These analog games all feature a _pile_ of letter _tiles_ that the player _draws_ from.
+While working on _Adagrams_, it may help to think of a physical metaphor for this game, such as other common word games like _Scrabble_ or _Bananagrams_. These analog games all feature a _pool_ of letter _tiles_ that the player _draws_ from.
+
+In this version of _Adagrams_, we will only be working with the English alphabet.
 
 ![an image of a pile of letter tiles](assets/letter-tiles.jpg)
 
 ## Learning Goals
 
-- Write Ruby code with methods that store data, read data, and manipulate data
-- Write Ruby code that takes in user input
+- Write Ruby code with methods that declare data, read data, and manipulate data
+- Write Ruby code with methods that take in parameters, use parameters, and return manipulated data
 - Use pair-programming techniques
 - Instill the habit of running unit tests to verify that the program works as expected
 
 ## Objective
 
-We will make a Ruby implementation of _Adagrams_ that runs [in the command line](https://en.wikipedia.org/wiki/Command-line_interface). The player will run this program. The program should give some output, wait for user interaction, and calculate output afterwards.
+We will make a Ruby implementation of _Adagrams_ that runs [in the command line](https://en.wikipedia.org/wiki/Command-line_interface).
 
 The program should also pass the provided unit tests.
 
@@ -54,9 +56,9 @@ Do not move onto a new wave of requirements until the minimum requirements of th
 Utilize good pair programming practices. Refer to articles from the [Agile Alliance](http://guide.agilealliance.org/guide/pairing.html), the [Agile Institute](http://powersoftwo.agileinstitute.com/2015/02/benefits-of-pair-programming-revisited.html), and [our own suggestions for pairing](https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/00-programming-fundamentals/programming-techniques-pairs-or-solo.md#pair-programming) if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainty or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
 
 ### Driver Code
-We have provided some driver code for your Adagrams game in the files `wave-1-game.rb`, `wave-2-game.rb`, and `wave-3-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Scrabble code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for making the tests pass**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified methods to specification and making the tests pass.
+We have provided some driver code for your Adagrams game in the files `wave-1-game.rb`, `wave-2-game.rb`, `wave-3-game.rb`, and `wave-4-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Adagrams code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for making the tests pass**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified methods to specification and making the tests pass.
 
-## Project Requirements
+## Setup Requirements
 ### Setup For Collaboration
 1. You'll be working with an assigned pair. High-five your pair.
 1. Choose **one person** to fork the project repo.
