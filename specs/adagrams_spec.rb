@@ -86,5 +86,23 @@ describe 'Adagrams' do
     end
   end
 
+  describe 'highest_score_from method' do
+    it 'returns a hash that contains the word and score of best word in an array' do
+      words = ['X', 'XX', 'XXX', 'XXXX']
+      best_word = highest_score_from words
+
+      best_word[:word].must_equal 'XXXX'
+      best_word[:score].must_equal 32
+    end
+
+    it 'accurately finds best scoring word even if not sorted' do
+      words = ['XXX', 'XXXX', 'XX', 'X']
+      best_word = highest_score_from words
+
+      best_word[:word].must_equal 'XXXX'
+      best_word[:score].must_equal 32
+    end
+
+  end
 
 end

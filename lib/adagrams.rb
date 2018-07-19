@@ -103,3 +103,18 @@ def score_word input
 
   total_score
 end
+
+def highest_score_from words
+  score_hashes = words.map do |word|
+    {
+      :word => word,
+      :score => score_word(word)
+    }
+  end
+
+  sorted_scores = score_hashes.sort_by do |hash|
+    hash[:score]
+  end
+
+  return sorted_scores.last
+end
