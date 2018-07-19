@@ -64,82 +64,31 @@ We have provided some driver code for your Adagrams game in the files `wave-1-ga
 1. Both individuals will clone the forked repo: `$ git clone [YOUR FORKED REPO URL]`
 1. Both individuals `cd` into the dir created.
 
-### Pair Plan
+### Setup a Pair Plan
 
-First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience. Then, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
+First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
 
 ### Get Familiar
 
 Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ rake` and see the tests fail.
 
-### Implementation Requirements
+Come up with a "plan of action" for your implementation with your pair.
 
-#### Score chart
-|Letter                        | Value|
-|:----------------------------:|:----:|
-|A, E, I, O, U, L, N, R, S, T  |   1  |
-|D, G                          |   2  |
-|B, C, M, P                    |   3  |
-|F, H, V, W, Y                 |   4  |
-|K                             |   5  |
-|J, X                          |   8  |
-|Q, Z                          |   10 |
+## Implementation Requirements
 
-## Wave 1
-### Primary Requirements
-For wave 1 you are given some scaffolding: tests and test stubs in `specs/scoring_spec.rb`, and method stubs in `lib/scoring.rb`.
+### Wave 1
 
-Complete the `Scrabble::Scoring` class with __full unit testing/specs__. All provided tests should pass, and all stubbed tests should be fully implemented (and pass). The class should have the following **class methods**:
+Implement the following method in the file `adagrams.rb`:
+- `draw_letters`
+  - In Adagrams, we need to get a random set of 10 letters, particularly from a "tile bag" or "letter pool." This method should get those random letters
+  - Has no parameters
+  - Returns an array of ten strings
+  - Each string in this array should be a string that is one letter long
+  - The letters should be pulled from a pool of letters. This letter pool should take into account the distribution of letters as described in the table below. For example, the table below describes that there are only 9 available 'A' letters. Therefore, `draw_letters` cannot ever return more than 9 'A' letters
+  - The letters drawn should be pulled from a pool of letters randomly
 
-- `self.score(word)`: returns the total score for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
-    - A seven letter word means that a player used all the tiles. Seven letter words receive a __50__ point bonus.
-    - Tests for `Scoring.score` are _already written_. Your job is to write code to make them pass.
-- `self.highest_score_from(array_of_words)`: returns **the word in the array with the highest score**. In the case of tie, use these tie-breaking rules:
-    - It’s better to use fewer tiles, in the case of a tie, prefer the word with the fewest letters.
-    - There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
-    - If the there are multiple words that are the same score and same length, pick the first one in the supplied list.
-    - Tests for this logic are _stubbed_, meaning the test has a name but no code written. You will have to implement them as you work on this method.
-    - Ensure that `self.highest_score_from(array_of_words)` works correctly regardless of the order of the words. Write a test for this case
+#### Distribution of Letters
 
-## Wave 2
-### Primary Requirements
-For waves 2 and 3, you are given no starter code. You and your pair will have to create all files and classes and write all the tests yourselves.
-
-Create a `Scrabble::Player` class with __full unit testing/specs__. You should have a spec that tests all pieces of functionality and logic.
-
-The constructor for `Scrabble::Player` should take exactly one argument: the player's `name`. Instances of the class should respond to the following messages:
-
-- `#name`: returns the value of the `@name` instance variable
-- `#plays`: returns an Array of the words played by the player
-- `#play(word)`: Adds the input word to the `plays` Array
-    - Returns `false` if player has already won
-    - Otherwise returns the score of the `word`
-- `#total_score`: Returns the sum of scores of played words
-- `#won?`: If the player has over 100 points, returns `true`, otherwise returns `false`
-- `#highest_scoring_word`: Returns the highest scoring played word
-- `#highest_word_score`: Returns the `highest_scoring_word` score
-
-For example,
-
-```ruby
-player = Scrabble::Player.new("Ada")
-player.name           # => "Ada"
-player.play('cat')    # => 5
-player.play('lizard') # => 16
-puts player.highest_scoring_word
-# prints out "lizard"
-```
-
-## Wave 3
-### Primary Requirements
-#### `TileBag`
-Create a `Scrabble::TileBag` class with __full unit testing/specs__. You should have a spec that tests all pieces of functionality and logic. It should have the following class and instance methods:
-
-- `#initialize` Should set up the instance with a collection of all default tiles
-- `#draw_tiles(num)` returns a collection of random tiles, removes the tiles from the default set
-- `#tiles_remaining` returns the number of tiles remaining in the bag
-
-##### Initial Distribution of Letters
 | Letter : Qty. | Letter : Qty. |
 |:------:|:-----:|
 | A : 9  | N : 6 |
@@ -156,18 +105,59 @@ Create a `Scrabble::TileBag` class with __full unit testing/specs__. You should 
 | L : 4  | Y : 2 |
 | M : 2  | Z : 1 |
 
-#### Modifications to `Player`
-Create specs for and add to the `Player` class the following instance methods:
+There is no requirement for the program to change this letter pool over time. Imagine that every time this method is called, it is a new letter pool every time.
 
-- `#tiles` a collection of letters that the player can play (max 7)
-- `#draw_tiles(tile_bag)` fills tiles array until it has 7 letters from the given tile bag
-    - It is not in the primary requirements to modify the existing `#play(word)` to use `#tiles` or check against the player's tiles
+### Wave 2
 
-### Optional Enhancements
-These need to be tested too!
-- Modify in `Player` the `#play(word)` method to only allow the player to play words using letters that the player has tiles for.
-- Create a `Scrabble::Dictionary` class that includes a method (class or instance) for searching a list of words to determine if a given word is valid (__must have tests__).
-- Create a `Scrabble::Board` class (__must have tests__) that has a matrix (array of arrays) of tile places. Check if a word can be played on a given tile place in a certain direction (up/down or left/right).
+Implement the following method in the file `adagrams.rb`:
+
+- `uses_available_letters? input, letter_bank`
+  - This method should check if the input word only uses characters that are contained within the passed in letter bank. Essentially, this method checks if the word is, indeed, an anagram of some or all of the given letters
+  - Has two parameters:
+     - `input`, the first parameter, describes some input word, and is a string
+     - `letter_bank`, the second parameter, describes an array of drawn letters. You can expect this to be an array of ten strings, with each string representing a letter
+  - Returns either `true` or `false`
+  - Returns `true` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
+  - Returns `false` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
+
+### Wave 3
+
+Implement the following method:
+
+- `score_word word`
+  - This method returns the score of a given word as defined by the Adagrams game
+  - Has one parameter: `word`, which is a string of characters
+  - Returns an integer representing the number of points
+  - Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
+  - Each letter's point value is described in the table below
+  - If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
+
+#### Score chart
+
+|Letter                        | Value|
+|:----------------------------:|:----:|
+|A, E, I, O, U, L, N, R, S, T  |   1  |
+|D, G                          |   2  |
+|B, C, M, P                    |   3  |
+|F, H, V, W, Y                 |   4  |
+|K                             |   5  |
+|J, X                          |   8  |
+|Q, Z                          |   10 |
+
+### Wave 4
+
+Implement the following method:
+
+- `highest_score_from words`
+  - This method looks at the array of `words` and calculates which of these words has the highest score, applies any tie-breaking logic, and returns the winning word in a special data structure
+  - Has one parameter: `words`, which is an array of strings
+  - Returns a single hash that represents the data of a winning word and its score. The hash should have the following keys:
+    - `:word`, whose value is a string of a word
+    - `:score`, whose value is the score of that word
+  - In the case of tie in scores, use these tie-breaking rules:
+      - prefer the word with the fewest letters...
+      - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
+      - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
 
 ## What Instructors Are Looking For
 Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
