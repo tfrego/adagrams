@@ -53,16 +53,6 @@ def uses_available_letters? input, letter_bank
   true
 end
 
-def is_alpha? input
-  is_alpha = true
-  input.split('').each do |letter|
-    if !letter.match(/[a-zA-Z]+/)
-      is_alpha = false
-    end
-  end
-  is_alpha
-end
-
 def score_word input
   letter_scores = {
       "A"=>1,
