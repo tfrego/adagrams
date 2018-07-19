@@ -101,6 +101,8 @@ def score_word input
     total_score += letter_scores[letter]
   end
 
+  total_score += letters.length > 6 ? 8 : 0
+
   total_score
 end
 
@@ -116,5 +118,21 @@ def highest_score_from words
     hash[:score]
   end
 
-  return sorted_scores.last
+  highest_score = sorted_scores.last[:score]
+
+  highest_scores = sorted_scores.select do |hash|
+    hash[:score] == highest_score
+  end
+
+  winning_word = highest_scores.first
+
+  highest_scores.each do |high_score|
+    if (high_score[:word].length < winning_word[:word].length) && (winning_word[:word].length != 10)
+      winning_word = high_score
+    elsif high_score[:word].length == 10 && winning_word[:word].length != 10
+      winning_word = high_score
+    end
+  end
+
+  winning_word
 end
