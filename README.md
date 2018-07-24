@@ -89,14 +89,18 @@ If, after you and your pair have taken some time to think through the problem an
 
 ### Wave 1
 
-Implement the following method in the file `adagrams.rb`:
-- `draw_letters`
-  - In Adagrams, we need to get a random set of 10 letters, particularly from a "tile bag" or "letter pool." This method should get those random letters
-  - Has no parameters
-  - Returns an array of ten strings
-  - Each string in this array should be a string that is one letter long
-  - The letters should be pulled from a pool of letters. This letter pool should take into account the distribution of letters as described in the table below. For example, the table below describes that there are only 9 available 'A' letters. Therefore, `draw_letters` cannot ever return more than 9 'A' letters
-  - The letters drawn should be pulled from a pool of letters randomly
+Our first job is to build a hand of 10 letters for the user. To do so, add a method called `draw_letters` in `adagrams.rb`. This method should have the following properties:
+
+- No parameters
+- Returns an array of ten strings
+  - Each string should contain exactly one letter
+  - These represent the hand of letters that the player has drawn
+- The letters should be randomly drawn from a pool of letters
+  - This letter pool should reflect the distribution of letters as described in the table below
+  - There are only 2 available `C` letters, so `draw_letters` cannot ever return more than 2 `C`s
+  - Since there are 12 `E`s but only 1 `Z`, it should be 12 times as likely for the user to draw an `E` as a `Z`
+- Invoking this method should **not** change the pool of letters
+  - Imagine that the user returns their hand to the pool before drawing new letters
 
 #### Distribution of Letters
 
@@ -116,32 +120,33 @@ Implement the following method in the file `adagrams.rb`:
 | L : 4  | Y : 2 |
 | M : 2  | Z : 1 |
 
-There is no requirement for the program to change this letter pool over time. Imagine that every time this method is called, it is a new letter pool every time.
+**Note:** Making sure that the drawn letters match the rules of the letter pool can be straightforward or very difficult, depending on how you build the data structure for the letter pool. It is worth spending some time with your partner to think carefully about this.
+
 
 ### Wave 2
 
-Implement the following method in the file `adagrams.rb`:
+Next, we need a way to check if an input word (a word a player submits) only uses characters that are contained within a hand of drawn letters, or letter bank. Essentially, we need a way to check if the word is, indeed, an anagram of some or all of the given letters.
 
-- `uses_available_letters? input, letter_bank`
-  - This method should check if the input word only uses characters that are contained within the passed in letter bank. Essentially, this method checks if the word is, indeed, an anagram of some or all of the given letters
-  - Has two parameters:
-     - `input`, the first parameter, describes some input word, and is a string
-     - `letter_bank`, the second parameter, describes an array of drawn letters. You can expect this to be an array of ten strings, with each string representing a letter
-  - Returns either `true` or `false`
-  - Returns `true` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
-  - Returns `false` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
+To do so, add a method called `uses_available_letters?` in `adagrams.rb`. This method should have the following properties:
+
+- Has two parameters:
+   - `input`, the first parameter, describes some input word, and is a string
+   - `letter_bank`, the second parameter, describes an array of drawn letters in a hand. You can expect this to be an array of ten strings, with each string representing a letter
+- Returns either `true` or `false`
+- Returns `true` if every letter in the `input` word is available (in the right quantities) in the `letter_bank`
+- Returns `false` if not; if there is a letter in `input` that is not present in the `letter_bank` or has too much of compared to the `letter_bank`
 
 ### Wave 3
 
-Implement the following method:
+We want a method that returns the score of a given word as defined by the Adagrams game.
 
-- `score_word word`
-  - This method returns the score of a given word as defined by the Adagrams game
-  - Has one parameter: `word`, which is a string of characters
-  - Returns an integer representing the number of points
-  - Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
-  - Each letter's point value is described in the table below
-  - If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
+Name this method `score_word` in `adagrams.rb`. This method should have the following properties:
+
+- Has one parameter: `word`, which is a string of characters
+- Returns an integer representing the number of points
+- Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
+- Each letter's point value is described in the table below
+- If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
 
 #### Score chart
 
@@ -157,18 +162,18 @@ Implement the following method:
 
 ### Wave 4
 
-Implement the following method:
+After several hands have been drawn, words have been submitted, checked, scored, and played, we want a way to find the highest scoring word. This method looks at the array of `words` and calculates which of these words has the highest score, applies any tie-breaking logic, and returns the winning word in a special data structure.
 
-- `highest_score_from words`
-  - This method looks at the array of `words` and calculates which of these words has the highest score, applies any tie-breaking logic, and returns the winning word in a special data structure
-  - Has one parameter: `words`, which is an array of strings
-  - Returns a single hash that represents the data of a winning word and its score. The hash should have the following keys:
-    - `:word`, whose value is a string of a word
-    - `:score`, whose value is the score of that word
-  - In the case of tie in scores, use these tie-breaking rules:
-      - prefer the word with the fewest letters...
-      - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
-      - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
+Add a method called `highest_score_from words` in `adagrams.rb`. This method should have the following properties:
+
+- Has one parameter: `words`, which is an array of strings
+- Returns a single hash that represents the data of a winning word and its score. The hash should have the following keys:
+  - `:word`, whose value is a string of a word
+  - `:score`, whose value is the score of that word
+- In the case of tie in scores, use these tie-breaking rules:
+    - prefer the word with the fewest letters...
+    - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
+    - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
 
 ## What Instructors Are Looking For
 Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
