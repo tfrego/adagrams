@@ -96,6 +96,18 @@ def score_word input
   total_score
 end
 
+def break_tie(incumbent, challenger)
+  if incumbent[:word].length == 10
+    return incumbent
+  elsif challenger[:word].length == 10
+    return challenger
+  elsif challenger[:word].length < incumbent[:word].length
+    return challenger
+  else
+    return incumbent
+  end
+end
+
 def highest_score_from words
   score_hashes = words.map do |word|
     {
@@ -104,25 +116,15 @@ def highest_score_from words
     }
   end
 
-  sorted_scores = score_hashes.sort_by do |hash|
-    hash[:score]
-  end
+  winning_hash = score_hashes.first
 
-  highest_score = sorted_scores.last[:score]
-
-  highest_scores = sorted_scores.select do |hash|
-    hash[:score] == highest_score
-  end
-
-  winning_word = highest_scores.first
-
-  highest_scores.each do |high_score|
-    if (high_score[:word].length < winning_word[:word].length) && (winning_word[:word].length != 10)
-      winning_word = high_score
-    elsif high_score[:word].length == 10 && winning_word[:word].length != 10
-      winning_word = high_score
+  score_hashes.each do |current_hash|
+    if current_hash[:score] > winning_hash[:score]
+      winning_hash = current_hash
+    elsif current_hash[:score] == winning_hash[:score]
+      winning_hash = break_tie(winning_hash, current_hash)
     end
   end
 
-  winning_word
+  return winning_hash
 end
