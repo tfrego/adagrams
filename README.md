@@ -38,7 +38,7 @@ The program should also pass the provided unit tests.
 </details>
 
 ### Tests
-We have provided unit tests for you to run. A complete project will pass all 16 provided tests.
+We have provided unit tests for you to run. A complete project will pass all provided tests.
 
 To run the tests, in the command line, navigate to the project root and then run the command `$ rake` (without the `$`. Remember, `$` indicates that it is a command line command.)
 
