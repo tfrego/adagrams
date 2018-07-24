@@ -83,6 +83,8 @@ Take time to read through the Wave 1 implementation requirements and the tests f
 
 Come up with a "plan of action" for your implementation with your pair.
 
+If, after you and your pair have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hint we've provided](hints.md).
+
 ## Implementation Requirements
 
 ### Wave 1
