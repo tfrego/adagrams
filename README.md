@@ -33,6 +33,7 @@ The program should also pass the provided unit tests.
 
 <details>
 <summary>For the curious about `rake`, click here</summary>
+
 `rake` [(official site)](https://github.com/ruby/rake) is a program that runs tasks that we define. In this case, we have a pre-defined task that executes the tests. By running `rake`, we are saying something like, "Please run the tasks, which includes the task that executes the tests."
 </details>
 
