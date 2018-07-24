@@ -66,8 +66,11 @@ We have provided some driver code for your Adagrams game in the files `wave-1-ga
 1. You'll be working with an assigned pair. High-five your pair.
 1. Choose **one person** to fork the project repo.
 1. Add the other person in the pair (who didn't fork) to the forked repo as a _collaborator_. Instructions [here](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/).
-1. Both individuals will clone the forked repo: `$ git clone [YOUR FORKED REPO URL]`
-1. Both individuals `cd` into the dir created.
+1. Pick one machine to work on for the first few days.
+1. That machine will clone the forked repo: `$ git clone [YOUR FORKED REPO URL]`
+1. `cd` into the dir created.
+
+**Note:** At this point, we have to work off of one machine, and if we need to share code with each other, we need to do something awkward, unreliable, and slow, like email files of code to each other. Later this week, we'll learn how to get the code onto both machines and collaborate simultaneously using Git.
 
 ### Setup a Pair Plan
 
