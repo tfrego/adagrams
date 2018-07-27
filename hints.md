@@ -1,8 +1,8 @@
 # Hints
 
-Given some problem, as programmers, we need to break down the problem.
+Given some problem, as programmers, we first need to break down the factors of the problem before we find a solution.
 
-First, we think about the problem conceptually. Then, we transfer the problem's factors, constraints, and concepts into representations of data.
+First, we think about the problem conceptually. Then, we liken the problem's factors, constraints, and concepts into representations of data.
 
 For _Adagrams_, what are the concepts associated with the problem?
 
