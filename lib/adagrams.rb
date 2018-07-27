@@ -30,11 +30,11 @@ def draw_letters
   drawn_letters
 end
 
-def uses_available_letters? input, letter_bank
+def uses_available_letters? input, letters_in_hand
   input_array = input.upcase.split('')
   letter_hash = {}
 
-  letter_bank.each do |letter|
+  letters_in_hand.each do |letter|
     letter_hash[letter] = letter_hash[letter] ? letter_hash[letter] + 1 : 1
   end
 
