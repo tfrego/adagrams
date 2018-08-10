@@ -8,132 +8,102 @@
 
 An [anagram](https://en.wikipedia.org/wiki/Anagram) is a word or phrase formed by rearranging the letters of a different word or phrase. _Adagrams_ is a fictional game in which a player is given a random set of letters and must make an anagram using those letters. _Adagrams_ has a specific scoring system, so that the player's submitted anagram scores points. The rules for Adagrams are roughly inspired by the "Letter Round" portion of the British game show [Countdown](https://en.wikipedia.org/wiki/Countdown_%28game_show%29%23Letters_round).
 
-While working on _Adagrams_, it may help to think of a physical metaphor for this game, such as other common word games like _Scrabble_ or _Bananagrams_. These analog games all feature a _pile_ of letter _tiles_ that the player _draws_ from.
+While working on _Adagrams_, it may help to think of a physical metaphor for this game, such as other common word games like _Scrabble_ or _Bananagrams_. These analog games all feature a _pool_ of letter _tiles_ that the player _draws_ from.
+
+In this version of _Adagrams_, we will only be working with the English alphabet.
 
 ![an image of a pile of letter tiles](assets/letter-tiles.jpg)
 
 ## Learning Goals
 
-- Write Ruby code with methods that store data, read data, and manipulate data
-- Write Ruby code that takes in user input
+- Write Ruby code with methods that declare data, read data, and manipulate data
+- Write Ruby code with methods that take in parameters, use parameters, and return manipulated data
 - Use pair-programming techniques
 - Instill the habit of running unit tests to verify that the program works as expected
 
 ## Objective
 
-We will make a Ruby implementation of _Adagrams_ that runs [in the command line](https://en.wikipedia.org/wiki/Command-line_interface). The player will run this program. The program should give some output, wait for user interaction, and calculate output afterwards.
+We will make a Ruby implementation of _Adagrams_ that runs [in the command line](https://en.wikipedia.org/wiki/Command-line_interface).
 
 The program should also pass the provided unit tests.
 
 ## Getting Started
 
 * From the project root, you are able to execute all of your specs by running `rake` in Terminal
-* You will need to use `require_relative` to tell Ruby how to work with code defined in multiple files
 
 <details>
 <summary>For the curious about `rake`, click here</summary>
+
 `rake` [(official site)](https://github.com/ruby/rake) is a program that runs tasks that we define. In this case, we have a pre-defined task that executes the tests. By running `rake`, we are saying something like, "Please run the tasks, which includes the task that executes the tests."
 </details>
 
 ### Tests
-We will use [minitest](https://github.com/seattlerb/minitest) for this project.
+We have provided unit tests for you to run. A complete project will pass all provided tests.
 
-We have provided you with a `Rakefile` and spec files. The tests in these spec files require that you follow the naming conventions we define for you below.
+To run the tests, in the command line, navigate to the project root and then run the command `$ rake` (without the `$`. Remember, `$` indicates that it is a command line command.)
 
-Do not move onto a new tier of requirements until the minimum requirements of the previous tier are complete and your specs are green across the board.
+When you first open the project and run the tests with `rake`, you should have 0 passing tests and 16 failures. You should see something similar to the following screenshots:
 
-<!-- ### Driver Code
-We have provided some driver code for your Scrabble game in the files `wave-1-game.rb`, `wave-2-game.rb`, and `wave-3-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Scrabble code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for TDD or writing tests**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified classes below strictly through TDD. -->
+![failing tests error stack trace that reads "no method defined"](assets/failing-tests-error.png)
+![failing tests error reading "16 failures"](assets/failing-tests-screenshot.png)
+
+What do these errors mean? These errors should help guide you with the next step to completing the project.
+
+The tests for this project are written in [minitest](https://github.com/seattlerb/minitest), a testing framework by Seattle Ruby Brigade.
+
+Do not move onto a new wave of requirements until the minimum requirements of the previous wave are complete and your specs are green across the board.
+
+Here is what it looks like when all 16 tests are passing:
+![all 16 tests are passing message](assets/passing-tests-screenshot.png)
 
 ### Pair Programming
 Utilize good pair programming practices. Refer to articles from the [Agile Alliance](http://guide.agilealliance.org/guide/pairing.html), the [Agile Institute](http://powersoftwo.agileinstitute.com/2015/02/benefits-of-pair-programming-revisited.html), and [our own suggestions for pairing](https://github.com/Ada-Developers-Academy/textbook-curriculum/blob/master/00-programming-fundamentals/programming-techniques-pairs-or-solo.md#pair-programming) if you need a refresher for some best practices. Switch _driver_ and _navigator_ roles often. When there is uncertainty or confusion, step away from the keyboard and discuss, plan, and document on paper or whiteboard before continuing.
 
-## Baseline
-### Setup
+### Driver Code
+We have provided some driver code for your Adagrams game in the files `wave-1-game.rb`, `wave-2-game.rb`, `wave-3-game.rb`, and `wave-4-game.rb`. Running `$ ruby wave-1-game.rb` will begin a command-line game that uses your Adagrams code. The boilerplate code will break the first time you run it: working through the waves specified below should create a running version of the game. **Implementing code to make this game run is not a substitute for making the tests pass**. It is simply there for you and your pair to reference how the Game may run during each wave, to have better perspective of what your program can do, and to get some practice reading other peoples' code. We fully expect you to create the specified methods to specification and making the tests pass.
+
+## Setup Requirements
+### Setup For Collaboration
 1. You'll be working with an assigned pair. High-five your pair.
 1. Choose **one person** to fork the project repo.
 1. Add the other person in the pair (who didn't fork) to the forked repo as a _collaborator_. Instructions [here](https://help.github.com/articles/inviting-collaborators-to-a-personal-repository/).
-1. Both individuals will clone the forked repo: `$ git clone [YOUR FORKED REPO URL]`
-1. Both individuals `cd` into the dir created.
+1. Pick one machine to work on for the first few days.
+1. That machine will clone the forked repo: `$ git clone [YOUR FORKED REPO URL]`
+1. `cd` into the dir created.
 
-### Requirements
-#### Pair Plan
-First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience. Then, review the requirements for Wave 1 and come up with a "plan of action" for your implementation.
+**Note:** At this point, we have to work off of one machine, and if we need to share code with each other, we need to do something awkward, unreliable, and slow, like email files of code to each other. Later this week, we'll learn how to get the code onto both machines and collaborate simultaneously using Git.
 
-#### Implementation
-- Read through the file `lib/scoring.rb`. Inside this file, you should find:
-    - A `Scrabble` module
-    - A `Scrabble::Scoring` **class**
-- Add some sort of data structure to `Scrabble::Scoring` to store the **individual letter scores** listed below
-- Read through the spec file `specs/scoring_spec.rb`, which corresponds to your `Scrabble::Scoring` class. This file has some tests pre-written and some test stubs that you will need to fill in.
-- Be able to execute the tests using `rake` from the project root.
+### Setup a Pair Plan
 
-#### Score chart
-|Letter                        | Value|
-|:----------------------------:|:----:|
-|A, E, I, O, U, L, N, R, S, T  |   1  |
-|D, G                          |   2  |
-|B, C, M, P                    |   3  |
-|F, H, V, W, Y                 |   4  |
-|K                             |   5  |
-|J, X                          |   8  |
-|Q, Z                          |   10 |
+First, come up with a "plan of action" for how you want to work as a pair. Discuss your learning style, how you prefer to receive feedback, and one team communication skill you want to improve with this experience.
 
-## Wave 1
-### Primary Requirements
-For wave 1 you are given some scaffolding: tests and test stubs in `specs/scoring_spec.rb`, and method stubs in `lib/scoring.rb`.
+### Get Familiar
 
-Complete the `Scrabble::Scoring` class with __full unit testing/specs__. All provided tests should pass, and all stubbed tests should be fully implemented (and pass). The class should have the following **class methods**:
+Take time to read through the Wave 1 implementation requirements and the tests for wave 1. Write down your questions, and spend some time going through your understanding of the requirements and tests with your pair. Make sure you both can run `$ rake` and see the tests fail.
 
-- `self.score(word)`: returns the total score for the given word. The word is input as a string (case insensitive). The chart in the baseline requirements shows the point value for a given letter.
-    - A seven letter word means that a player used all the tiles. Seven letter words receive a __50__ point bonus.
-    - Tests for `Scoring.score` are _already written_. Your job is to write code to make them pass.
-- `self.highest_score_from(array_of_words)`: returns **the word in the array with the highest score**. In the case of tie, use these tie-breaking rules:
-    - It’s better to use fewer tiles, in the case of a tie, prefer the word with the fewest letters.
-    - There is a bonus for words that are seven letters. If the top score is tied between multiple words and one used all seven letters, choose the one with seven letters over the one with fewer tiles.
-    - If the there are multiple words that are the same score and same length, pick the first one in the supplied list.
-    - Tests for this logic are _stubbed_, meaning the test has a name but no code written. You will have to implement them as you work on this method.
-    - Ensure that `self.highest_score_from(array_of_words)` works correctly regardless of the order of the words. Write a test for this case
+Come up with a "plan of action" for your implementation with your pair.
 
-## Wave 2
-### Primary Requirements
-For waves 2 and 3, you are given no starter code. You and your pair will have to create all files and classes and write all the tests yourselves.
+If, after you and your pair have taken some time to think through the problem and would like direction for how to dissect the problem, or if you need clarity on the terms/vocabulary we used in this project, you can check out [a small hint we've provided](hints.md).
 
-Create a `Scrabble::Player` class with __full unit testing/specs__. You should have a spec that tests all pieces of functionality and logic.
+## Implementation Requirements
 
-The constructor for `Scrabble::Player` should take exactly one argument: the player's `name`. Instances of the class should respond to the following messages:
+### Wave 1
 
-- `#name`: returns the value of the `@name` instance variable
-- `#plays`: returns an Array of the words played by the player
-- `#play(word)`: Adds the input word to the `plays` Array
-    - Returns `false` if player has already won
-    - Otherwise returns the score of the `word`
-- `#total_score`: Returns the sum of scores of played words
-- `#won?`: If the player has over 100 points, returns `true`, otherwise returns `false`
-- `#highest_scoring_word`: Returns the highest scoring played word
-- `#highest_word_score`: Returns the `highest_scoring_word` score
+Our first job is to build a hand of 10 letters for the user. To do so, add a method called `draw_letters` in `adagrams.rb`. This method should have the following properties:
 
-For example,
+- No parameters
+- Returns an array of ten strings
+  - Each string should contain exactly one letter
+  - These represent the hand of letters that the player has drawn
+- The letters should be randomly drawn from a pool of letters
+  - This letter pool should reflect the distribution of letters as described in the table below
+  - There are only 2 available `C` letters, so `draw_letters` cannot ever return more than 2 `C`s
+  - Since there are 12 `E`s but only 1 `Z`, it should be 12 times as likely for the user to draw an `E` as a `Z`
+- Invoking this method should **not** change the pool of letters
+  - Imagine that the user returns their hand to the pool before drawing new letters
 
-```ruby
-player = Scrabble::Player.new("Ada")
-player.name           # => "Ada"
-player.play('cat')    # => 5
-player.play('lizard') # => 16
-puts player.highest_scoring_word
-# prints out "lizard"
-```
+#### Distribution of Letters
 
-## Wave 3
-### Primary Requirements
-#### `TileBag`
-Create a `Scrabble::TileBag` class with __full unit testing/specs__. You should have a spec that tests all pieces of functionality and logic. It should have the following class and instance methods:
-
-- `#initialize` Should set up the instance with a collection of all default tiles
-- `#draw_tiles(num)` returns a collection of random tiles, removes the tiles from the default set
-- `#tiles_remaining` returns the number of tiles remaining in the bag
-
-##### Initial Distribution of Letters
 | Letter : Qty. | Letter : Qty. |
 |:------:|:-----:|
 | A : 9  | N : 6 |
@@ -150,18 +120,79 @@ Create a `Scrabble::TileBag` class with __full unit testing/specs__. You should 
 | L : 4  | Y : 2 |
 | M : 2  | Z : 1 |
 
-#### Modifications to `Player`
-Create specs for and add to the `Player` class the following instance methods:
+**Note:** Making sure that the drawn letters match the rules of the letter pool can be straightforward or very difficult, depending on how you build the data structure for the letter pool. It is worth spending some time with your partner to think carefully about this.
 
-- `#tiles` a collection of letters that the player can play (max 7)
-- `#draw_tiles(tile_bag)` fills tiles array until it has 7 letters from the given tile bag
-    - It is not in the primary requirements to modify the existing `#play(word)` to use `#tiles` or check against the player's tiles
 
-### Optional Enhancements
-These need to be tested too!
-- Modify in `Player` the `#play(word)` method to only allow the player to play words using letters that the player has tiles for.
-- Create a `Scrabble::Dictionary` class that includes a method (class or instance) for searching a list of words to determine if a given word is valid (__must have tests__).
-- Create a `Scrabble::Board` class (__must have tests__) that has a matrix (array of arrays) of tile places. Check if a word can be played on a given tile place in a certain direction (up/down or left/right).
+### Wave 2
+
+Next, we need a way to check if an input word (a word a player submits) only uses characters that are contained within a collection (or hand) of drawn letters. Essentially, we need a way to check if the word is, indeed, an anagram of some or all of the given letters in the hand.
+
+To do so, add a method called `uses_available_letters?` in `adagrams.rb`. This method should have the following properties:
+
+- Has two parameters:
+   - `input`, the first parameter, describes some input word, and is a string
+   - `letters_in_hand`, the second parameter, describes an array of drawn letters in a hand. You can expect this to be an array of ten strings, with each string representing a letter
+- Returns either `true` or `false`
+- Returns `true` if every letter in the `input` word is available (in the right quantities) in the `letters_in_hand`
+- Returns `false` if not; if there is a letter in `input` that is not present in the `letters_in_hand` or has too much of compared to the `letters_in_hand`
+
+### Wave 3
+
+We want a method that returns the score of a given word as defined by the Adagrams game.
+
+Name this method `score_word` in `adagrams.rb`. This method should have the following properties:
+
+- Has one parameter: `word`, which is a string of characters
+- Returns an integer representing the number of points
+- Each letter within `word` has a point value. The number of points of each letter is summed up to represent the total score of `word`
+- Each letter's point value is described in the table below
+- If the length of the word is 7, 8, 9, or 10, then the word gets an additional 8 points
+
+#### Score chart
+
+|Letter                        | Value|
+|:----------------------------:|:----:|
+|A, E, I, O, U, L, N, R, S, T  |   1  |
+|D, G                          |   2  |
+|B, C, M, P                    |   3  |
+|F, H, V, W, Y                 |   4  |
+|K                             |   5  |
+|J, X                          |   8  |
+|Q, Z                          |   10 |
+
+### Wave 4
+
+After several hands have been drawn, words have been submitted, checked, scored, and played, we want a way to find the highest scoring word. This method looks at the array of `words` and calculates which of these words has the highest score, applies any tie-breaking logic, and returns the winning word in a special data structure.
+
+Add a method called `highest_score_from words` in `adagrams.rb`. This method should have the following properties:
+
+- Has one parameter: `words`, which is an array of strings
+- Returns a single hash that represents the data of a winning word and its score. The hash should have the following keys:
+  - `:word`, whose value is a string of a word
+  - `:score`, whose value is the score of that word
+- In the case of tie in scores, use these tie-breaking rules:
+    - prefer the word with the fewest letters...
+    - ...unless one word has 10 letters. If the top score is tied between multiple words and one is 10 letters long, choose the one with 10 letters over the one with fewer tiles
+    - If the there are multiple words that are the same score and the same length, pick the first one in the supplied list
+
+### Optional: Wave 5
+
+We want to be able to verify that a word that a player submits is a valid word against the English dictionary.
+
+We have the English dictionary available as a CSV file. We want to write a method that checks an input word against the words listed in the CSV file. If the word is found in the CSV file, then the word is valid and can be played.
+
+Add a method called `is_in_english_dict?` in `adagrams.rb`. This method should have the following properties:
+
+- Has one parameter: `input`, which is a string
+- Returns a boolean
+  - `true`, if `input` is in the provided English dictionary
+  - `false`, if `input` is not in the provided English dictionary
+- Uses the English dictionary found in `assets/dictionary-english.csv`
+
+There are no unit tests provided for this wave, but there is driver code found in `wave-5-game.rb`. Feel free to alter `specs/adagrams_sepc.rb` and add some!
+
+Nota Bene: The original data for all of the alpha words of the English dictionary was found freely available at [`dwyl/english-word`'s repo](https://github.com/dwyl/english-words), and was modified to only include words under 10 characters.
+
 
 ## What Instructors Are Looking For
 Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
