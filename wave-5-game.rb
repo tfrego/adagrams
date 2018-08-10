@@ -4,7 +4,7 @@ def display_welcome_message
   puts "Welcome to Adagrams!"
 end
 
-def display_drawn_letters letters
+def display_drawn_letters(letters)
   puts "You have drawn the letters:"
   puts letters.join(', ')
 end
@@ -23,16 +23,16 @@ def display_not_in_letter_bank_message
   display_game_instructions
 end
 
-def display_score score
+def display_score(score)
   puts "Your submitted anagram scored #{score} points"
 end
 
-def display_retry_insructions
+def display_retry_instructions
   puts "Should we play another round?"
   puts "Enter y to replay"
 end
 
-def display_highest_score high_score_hash
+def display_highest_score(high_score_hash)
   puts "Thanks for playing Adagrams!"
   puts "The highest score from this game was #{high_score_hash[:word]}, which was worth #{high_score_hash[:score]} points"
 end
@@ -72,16 +72,16 @@ def run_game
       user_input_word = get_user_input
     end
 
-    score = score_word user_input_word
+    score = score_word(user_input_word)
     played_words << user_input_word
 
-    display_score score
+    display_score(score)
 
-    display_retry_insructions
+    display_retry_instructions
     should_continue = get_user_input == "y"
   end
 
-  display_highest_score highest_score_from played_words
+  display_highest_score(highest_score_from(played_words))
   display_goodbye_message
 end
 

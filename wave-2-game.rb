@@ -4,7 +4,7 @@ def display_welcome_message
   puts "Welcome to Adagrams!"
 end
 
-def display_drawn_letters letters
+def display_drawn_letters(letters)
   puts "You have drawn the letters:"
   puts letters.join(', ')
 end
@@ -18,11 +18,11 @@ def display_needs_valid_input_message
   display_game_instructions
 end
 
-def display_score score
+def display_score(score)
   puts "Your submitted anagram scored #{score} points"
 end
 
-def display_retry_insructions
+def display_retry_instructions
   puts "Should we play another round?"
   puts "Enter y to replay"
 end
@@ -55,7 +55,7 @@ def run_game
       user_input_word = get_user_input
     end
 
-    display_retry_insructions
+    display_retry_instructions
     should_continue = get_user_input == "y"
   end
 
