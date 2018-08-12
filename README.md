@@ -122,6 +122,7 @@ Our first job is to build a hand of 10 letters for the user. To do so, add a met
 
 **Note:** Making sure that the drawn letters match the rules of the letter pool can be straightforward or very difficult, depending on how you build the data structure for the letter pool. It is worth spending some time with your partner to think carefully about this.
 
+<!--
 
 ### Wave 2
 
@@ -193,6 +194,6 @@ There are no unit tests provided for this wave, but there is driver code found i
 
 Nota Bene: The original data for all of the alpha words of the English dictionary was found freely available at [`dwyl/english-word`'s repo](https://github.com/dwyl/english-words), and was modified to only include words under 10 characters.
 
-
+--> 
 ## What Instructors Are Looking For
 Check out the [feedback template](feedback.md) which lists the items instructors will be looking for as they evaluate your project.
