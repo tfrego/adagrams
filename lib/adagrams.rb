@@ -29,7 +29,6 @@ letter_pool = {
   :Z => 1
 }
 
-
 # Method to draw letters and return an array of 10 strings
 def draw_letters
   # Empty array to hold drawn letters
@@ -46,10 +45,19 @@ def draw_letters
     # delete drawn letter from available_letters array
     available_letters.delete_at(available_letters.index(letter))
   end
-  puts "letters drawn #{drawn_letters}"
-  puts "available letters #{available_letters}"
-
-
+  # puts letter
+  return drawn_letters
 end
 
 draw_letters
+
+def uses_available_letters?(input, letters_in_hand)
+  # Input - Describes the input word
+  # letters_in_hand describes array of drawn letters (draw_letters)
+  #
+
+  # RETURNS true or false
+    # True if EVERY letter in input is available
+    # False if not (letter not present in letters in hand or has too many of that letter)
+
+end
