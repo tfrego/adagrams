@@ -34,19 +34,21 @@ letter_pool = {
 def draw_letters
   # Empty array to hold drawn letters
   drawn_letters = []
-  # Array of all the letters in pool
+  # Array of all the letters available to be drawn from pool
   available_letters = %w(A A A A A A A A A B B C C D D D D E E E E E E E E E E E E
   F F G G G H H I I I I I I I I I J K L L L L M M N N N N N N O O O O O O O O P P
   Q R R R R R R S S S S T T T T T T U U U U V V W W X Y Y Z)
-  puts available_letters
-  # MEthod
-  def draw_random_letter(arr)
-    # Randomly draw a letter from pool
-
-    # PUSH random letter returned by method to drawn_letters array
-    # Remove drawn letter from available letter array
+  # randomly draw letter from pool
+  10.times do
+    letter = available_letters.sample
+    # push random letter
+    drawn_letters << letter
+    # delete drawn letter from available_letters array
+    available_letters.delete_at(available_letters.index(letter))
   end
-  # RETURN an array of 10 letters
+  puts "letters drawn #{drawn_letters}"
+  puts "available letters #{available_letters}"
+
 
 end
 
