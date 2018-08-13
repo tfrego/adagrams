@@ -1,7 +1,4 @@
-# method to draw letters and return an array of 10 strings
-def draw_letters
 
-end
 
 letter_pool = {
   :A => 9,
@@ -31,3 +28,26 @@ letter_pool = {
   :Y => 2,
   :Z => 1
 }
+
+
+# Method to draw letters and return an array of 10 strings
+def draw_letters
+  # Empty array to hold drawn letters
+  drawn_letters = []
+  # Array of all the letters in pool
+  available_letters = %w(A A A A A A A A A B B C C D D D D E E E E E E E E E E E E
+  F F G G G H H I I I I I I I I I J K L L L L M M N N N N N N O O O O O O O O P P
+  Q R R R R R R S S S S T T T T T T U U U U V V W W X Y Y Z)
+  puts available_letters
+  # MEthod
+  def draw_random_letter(arr)
+    # Randomly draw a letter from pool
+
+    # PUSH random letter returned by method to drawn_letters array
+    # Remove drawn letter from available letter array
+  end
+  # RETURN an array of 10 letters
+
+end
+
+draw_letters
