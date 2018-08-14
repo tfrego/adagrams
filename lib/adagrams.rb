@@ -45,19 +45,39 @@ def draw_letters
     # delete drawn letter from available_letters array
     available_letters.delete_at(available_letters.index(letter))
   end
-  # puts letter
   return drawn_letters
 end
 
 draw_letters
 
 def uses_available_letters?(input, letters_in_hand)
-  # Input - Describes the input word
-  # letters_in_hand describes array of drawn letters (draw_letters)
-  #
 
-  # RETURNS true or false
+  # split word into array of single letters
+  input_letters = input.chars.inject(Hash.new(0)) { |total, letter| total[letter] += 1 ;total}
+  puts input_letters
+  # check if letter is in letters_in_hand with right quantities
+    # 1) make unique array of letters
+
+
+    # 2) count letters in word
+
+    # 3) compare to letters in hand
+
+
+
+
+
+    # if total count of letter < total count of letter in letters_in_hand
+      # => True
+
+
     # True if EVERY letter in input is available
+
     # False if not (letter not present in letters in hand or has too many of that letter)
 
 end
+
+puts "Please enter your anagram: "
+word = gets.chomp.upcase
+
+puts uses_available_letters?(word, draw_letters)
