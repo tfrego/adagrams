@@ -52,14 +52,22 @@ draw_letters
 
 def uses_available_letters?(input, letters_in_hand)
 
-  # split word into array of single letters
-  input_letters = input.chars.inject(Hash.new(0)) { |total, letter| total[letter] += 1 ;total}
-  puts input_letters
+  # create hash of input letter quantities for word and hand
+  word = input.chars.inject(Hash.new(0)) { |total, letter| total[letter] += 1 ;total}
+  hand = letters_in_hand.inject(Hash.new(0)) { |total, letter| total[letter] += 1 ;total}
+  puts "here's our hand #{hand}"
   # check if letter is in letters_in_hand with right quantities
-    # 1) make unique array of letters
-
-
-    # 2) count letters in word
+  word.each do |word_letter, word_quantitiy|
+    # For each letter, select hash in hand
+    match = hand.select { |hand_letter, hand_quantity| word_letter == hand_letter }
+    # If there's no match, what do we do? Empty is true
+    if match.empty?
+      return false
+    end
+    # If there is a match, is the quantity in the word more than the quantity in the hand?
+    puts "MATCH #{match}, Class #{match.class} Empty #{match.empty?}"
+  end
+    # 2) create
 
     # 3) compare to letters in hand
 
@@ -80,4 +88,4 @@ end
 puts "Please enter your anagram: "
 word = gets.chomp.upcase
 
-puts uses_available_letters?(word, draw_letters)
+ uses_available_letters?(word, draw_letters)
