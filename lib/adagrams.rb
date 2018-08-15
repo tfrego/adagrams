@@ -111,6 +111,21 @@ def highest_score_from_words(words)
   puts "Potential Winners: #{potential_winners}"
   # If tied, winner is fewest possible letters UNLESS
 
+  if potential_winners.length > 1
+    puts "TIE!"
+    word_lengths = potential_winners.map do |potential_winner|
+      potential_winner[:word].length
+    end
+    puts word_lengths
+
+    if word_lengths.uniq.length
+    # iterate through each hash in array of winners
+
+      # compare length
+  else
+    return potential_winners[0]
+  end
+
     # One word is 10 letters
 
   # IF same length, RETURN first word
