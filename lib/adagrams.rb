@@ -63,3 +63,21 @@ letter_results = []
   end
   return letter_results.all?(true)
 end
+
+
+def score_word(word)
+  score = 0
+  word.upcase!
+  word.chars.each do |letter|
+    case letter
+    when 'I'
+      puts "I is worth 1"
+      score += 1
+
+
+    end
+  end
+  return score
+end
+
+puts score_word("hi")
