@@ -68,16 +68,29 @@ end
 def score_word(word)
   score = 0
   word.upcase!
+
   word.chars.each do |letter|
     case letter
-    when 'I'
-      puts "I is worth 1"
+    when 'A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'
       score += 1
-
-
+    when 'D', 'G'
+      score += 2
+    when 'B', 'C', 'M', 'P'
+      score += 3
+    when 'F', 'H', 'V', 'W', 'Y'
+      score += 4
+    when 'K'
+      score += 5
+    when 'J', 'X'
+      score += 8
+    when 'Q', 'Z'
+      score += 10
     end
   end
+
+  if word.chars.length.between?(7,10)
+    score += 8
+  end
+
   return score
 end
-
-puts score_word("hi")
