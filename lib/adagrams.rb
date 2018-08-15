@@ -94,3 +94,13 @@ def score_word(word)
 
   return score
 end
+
+# method to find highest scoring word
+def highest_score_from_words(words)
+  word_scores = words.map do |word|
+    {:word => word, :score => score_word(word)}
+  end
+  puts word_scores
+end
+
+highest_score_from_words(["hi", "cat", "pizza"])
