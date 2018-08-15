@@ -121,7 +121,10 @@ def highest_score_from_words(words)
     puts "POTENTIAL WINNERS #{potential_winners}"
     # Select if length is 10, return first as winner
     length_of_10 = potential_winners.select { |h| h[:word_length] == 10 }
-
+    if length_of_10.length > 0
+      winner = { :word => length_of_10[0][:word], :score => length_of_10[0][:score]}
+    end
+    puts "Winner: #{winner}"
 
     # One 10 - winner
 
@@ -144,4 +147,4 @@ def highest_score_from_words(words)
 
 end
 
-highest_score_from_words(["hi", "aeiou","dg", "aaaaaaaaaa"])
+highest_score_from_words(["hi", "aeiou","dg", "aaaaaaaaaa", "eeeeeeeeee"])
