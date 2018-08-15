@@ -104,47 +104,30 @@ def highest_score_from_words(words)
   # Determine the winning score
     # word_score array - find top score
     top_score = word_scores.max_by{ |k| k[:score] } [:score]
-    puts "Top Score : #{top_score}"
   # Select hashes in word_scores that have winning score
     potential_winners = word_scores.select { |h| h[:score] == top_score }
-
-    puts "Potential winners with top score: #{potential_winners}"
   # Checking length of potential winners array
+
   if potential_winners.length > 1
     # If greater than one, there's a tie
-    puts "TIE!"
     potential_winners.each do |potential_winner|
       # Adding word lengths to potential winners
       potential_winner[:word_length] = potential_winner[:word].length
     end
-
-    puts "POTENTIAL WINNERS #{potential_winners}"
     # Select if length is 10, return first as winner
     length_of_10 = potential_winners.select { |h| h[:word_length] == 10 }
     if length_of_10.length > 0
       winner = { :word => length_of_10[0][:word], :score => length_of_10[0][:score]}
+    else
+      # No tens, pick fewest letters
+      winner = potential_winners.min_by { |potential_winner| potential_winner[:word_length]}
+      winner = { :word => winner[:word], :score => winner[:score] }
+      # If all the same length pick the first one
     end
-    puts "Winner: #{winner}"
-
-    # One 10 - winner
-
-    # More than one 10 - pick the first one
-
-    # No tens, pick fewest letters
-
-    # If all the same length pick the first one
-
   else
     # If there's just one word, return that hash
     return potential_winners[0]
   end
-
-    # One word is 10 letters
-
-  # IF same length, RETURN first word
-
-# Return a single hash with winning word and score
-
 end
 
-highest_score_from_words(["hi", "aeiou","dg", "aaaaaaaaaa", "eeeeeeeeee"])
+highest_score_from_words(["aaaa", "aeee", 'da', 'daa'])
