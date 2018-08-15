@@ -51,41 +51,15 @@ end
 draw_letters
 
 def uses_available_letters?(input, letters_in_hand)
-
-  # create hash of input letter quantities for word and hand
-  word = input.chars.inject(Hash.new(0)) { |total, letter| total[letter] += 1 ;total}
-  hand = letters_in_hand.inject(Hash.new(0)) { |total, letter| total[letter] += 1 ;total}
-  puts "here's our hand #{hand}"
+input.upcase!
+letter_results = []
   # check if letter is in letters_in_hand with right quantities
-  word.each do |word_letter, word_quantitiy|
-    # For each letter, select hash in hand
-    match = hand.select { |hand_letter, hand_quantity| word_letter == hand_letter }
-    # If there's no match, what do we do? Empty is true
-    if match.empty?
-      return false
+  input.chars.each do |letter|
+    if input.count(letter) > letters_in_hand.count(letter)
+      letter_results << false
+    else
+      letter_results << true
     end
-    # If there is a match, is the quantity in the word more than the quantity in the hand?
-    puts "MATCH #{match}, Class #{match.class} Empty #{match.empty?}"
   end
-    # 2) create
-
-    # 3) compare to letters in hand
-
-
-
-
-
-    # if total count of letter < total count of letter in letters_in_hand
-      # => True
-
-
-    # True if EVERY letter in input is available
-
-    # False if not (letter not present in letters in hand or has too many of that letter)
-
+  return letter_results.all?(true)
 end
-
-puts "Please enter your anagram: "
-word = gets.chomp.upcase
-
- uses_available_letters?(word, draw_letters)
