@@ -100,7 +100,23 @@ def highest_score_from_words(words)
   word_scores = words.map do |word|
     {:word => word, :score => score_word(word)}
   end
-  puts word_scores
+
+  # Determine the winning score
+    # word_score array - find top score
+    top_score = word_scores.max_by{ |k| k[:score] } [:score]
+    puts "Top Score : #{top_score}"
+  # Select hashes in word_scores that have winning score
+    potential_winners = word_scores.select { |h| h[:score] == top_score }
+  # Maybe push hashes to an array then check array length for tie
+  puts "Potential Winners: #{potential_winners}"
+  # If tied, winner is fewest possible letters UNLESS
+
+    # One word is 10 letters
+
+  # IF same length, RETURN first word
+
+# Return a single hash with winning word and score
+
 end
 
-highest_score_from_words(["hi", "cat", "pizza"])
+highest_score_from_words(["hi", "aeiou","dg" ])
