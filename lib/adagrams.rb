@@ -1,4 +1,7 @@
 
+require 'awesome_print'
+require 'csv'
+
 # Draws letters and returns an array of 10 strings
 def draw_letters
   # Empty array to hold drawn letters
@@ -106,3 +109,14 @@ def highest_score_from(words)
     return potential_winners[0]
   end
 end
+
+# Verify if word exists in English dictionary
+def is_in_english_dict?(input)
+  # return array of dictionary words
+  dictionary = CSV.read('assets/dictionary-english.csv')
+  ap dictionary
+  # check if input is in dictionary
+
+end
+
+is_in_english_dict?('word')
