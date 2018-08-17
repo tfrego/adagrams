@@ -112,11 +112,11 @@ end
 
 # Verify if word exists in English dictionary
 def is_in_english_dict?(input)
-  # return array of dictionary words
+  # makes input an array of one element
+  input.downcase!
+  word = [input]
+  # return array of arrays of dictionary words
   dictionary = CSV.read('assets/dictionary-english.csv')
-  ap dictionary
-  # check if input is in dictionary
-
+  # checks dictionary for word
+  return dictionary.any?(word)
 end
-
-is_in_english_dict?('word')
